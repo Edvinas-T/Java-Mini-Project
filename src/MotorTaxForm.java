@@ -16,7 +16,6 @@ public class MotorTaxForm{
         registerBtn.addActionListener(new ActionListener() {
             public void actionPerformed (ActionEvent e) {
 
-
                 Register.showReg();
 
                 //Jframe register = new blahblah , blahblah.setvisible , this.setvisible false
@@ -26,7 +25,7 @@ public class MotorTaxForm{
     }
 
 
-    public static void main(String[] args) {
+    public void mainPage() {
         JFrame mainPage = new JFrame("Motor Tax");
         mainPage.setContentPane(new MotorTaxForm().panelMain);
         mainPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,6 +33,7 @@ public class MotorTaxForm{
         mainPage.setVisible(true);
         mainPage.setLocationRelativeTo(null);
         mainPage.setSize(700,500);
+
     }
 
 }
