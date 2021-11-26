@@ -27,7 +27,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="7e068" class="javax.swing.JLabel" binding="surnamePanel">
+          <component id="7e068" class="javax.swing.JLabel" binding="surnameLabel">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -35,7 +35,7 @@
               <text value="Surname"/>
             </properties>
           </component>
-          <component id="f069e" class="javax.swing.JLabel" binding="streetPanel">
+          <component id="f069e" class="javax.swing.JLabel" binding="streetLabel">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -43,7 +43,7 @@
               <text value="Street"/>
             </properties>
           </component>
-          <component id="15dc0" class="javax.swing.JLabel" binding="townPanel">
+          <component id="15dc0" class="javax.swing.JLabel" binding="townLabel">
             <constraints>
               <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -51,7 +51,7 @@
               <text value="Town"/>
             </properties>
           </component>
-          <component id="27218" class="javax.swing.JLabel" binding="countyPanel">
+          <component id="27218" class="javax.swing.JLabel" binding="countyLabel">
             <constraints>
               <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -59,7 +59,7 @@
               <text value="County"/>
             </properties>
           </component>
-          <component id="395a7" class="javax.swing.JLabel" binding="forenamePanel">
+          <component id="395a7" class="javax.swing.JLabel" binding="forenameLabel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -67,7 +67,7 @@
               <text value="Forename"/>
             </properties>
           </component>
-          <component id="57b05" class="javax.swing.JLabel" binding="eircodePanel">
+          <component id="57b05" class="javax.swing.JLabel" binding="eircodeLabel">
             <constraints>
               <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -75,7 +75,7 @@
               <text value="Eircode"/>
             </properties>
           </component>
-          <component id="91cee" class="javax.swing.JLabel" binding="phonePanel">
+          <component id="91cee" class="javax.swing.JLabel" binding="phoneLabel">
             <constraints>
               <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -83,7 +83,7 @@
               <text value="Phone Number"/>
             </properties>
           </component>
-          <component id="37b5" class="javax.swing.JLabel" binding="regPanel">
+          <component id="37b5" class="javax.swing.JLabel" binding="regLabel">
             <constraints>
               <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -91,7 +91,7 @@
               <text value="Registration Number"/>
             </properties>
           </component>
-          <component id="170dd" class="javax.swing.JLabel" binding="makePanel">
+          <component id="170dd" class="javax.swing.JLabel" binding="makeLabel">
             <constraints>
               <grid row="16" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -107,7 +107,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="11ace" class="javax.swing.JTextField" binding="surenameText">
+          <component id="11ace" class="javax.swing.JTextField" binding="surnameText">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -147,14 +147,6 @@
             </constraints>
             <properties/>
           </component>
-          <component id="fd389" class="javax.swing.JTextField" binding="phoneText">
-            <constraints>
-              <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
           <component id="754e4" class="javax.swing.JTextField" binding="regText">
             <constraints>
               <grid row="14" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
@@ -171,6 +163,17 @@
             </constraints>
             <properties>
               <editable value="false"/>
+              <model>
+                <item value="Audi"/>
+                <item value="BMW"/>
+                <item value="Ford"/>
+                <item value="Hyundai"/>
+                <item value="Kia"/>
+                <item value="Peugeot"/>
+              </model>
+              <opaque value="true"/>
+              <selectedIndex value="-1"/>
+              <visible value="true"/>
             </properties>
           </component>
           <component id="f54b3" class="javax.swing.JComboBox" binding="modelBox">
@@ -179,7 +182,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <visible value="false"/>
+            </properties>
           </component>
           <vspacer id="ed130">
             <constraints>
@@ -244,13 +249,22 @@
               </grid>
             </constraints>
           </vspacer>
-          <component id="57553" class="javax.swing.JLabel" binding="modelPanel">
+          <component id="57553" class="javax.swing.JLabel" binding="modelLabel">
             <constraints>
               <grid row="18" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Model"/>
+              <visible value="false"/>
             </properties>
+          </component>
+          <component id="4e682" class="javax.swing.JFormattedTextField" binding="phoneText">
+            <constraints>
+              <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
           </component>
         </children>
       </grid>
