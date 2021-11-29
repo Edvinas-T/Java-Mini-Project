@@ -18,11 +18,17 @@ public class MotorTaxForm{
 
                 Register.showReg();
 
-                //Jframe register = new blahblah , blahblah.setvisible , this.setvisible false
+
             }
         });
 
-    }
+         exitBtn.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+                 System.exit(0);
+             }
+         });
+     }
 
 
     public void mainPage() {

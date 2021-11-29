@@ -3,8 +3,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 public class RegisterOwnershipForm {
@@ -30,15 +34,15 @@ public class RegisterOwnershipForm {
     private JTextField eircodeText;
     private JTextField phoneText;
     private JTextField regText;
+    private JButton btnSave;
+    private ArrayList<String> text = new ArrayList<>();
 
-   // ArrayList<String> make = new ArrayList<String>();
+
+    // ArrayList<String> make = new ArrayList<String>();
 
 
 
     public RegisterOwnershipForm() {
-
-       // make.add("BMW"); make.add("Audi"); make.add("Ford");
-       // make.add("Mazda"); make.add("Peugeot"); make.add("Kia");
 
 
 
@@ -90,6 +94,11 @@ public class RegisterOwnershipForm {
             @Override
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
+                if((phoneText.getText().length()>=10))
+                {
+                    e.consume();
+                }
+
                 if(((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE))
                 {
                     e.consume();
@@ -169,6 +178,61 @@ public class RegisterOwnershipForm {
 
             }
         });
+        btnSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                text.add(forenameText.getText());
+                text.add(surnameText.getText());
+                text.add(streetText.getText());
+                text.add(townText.getText());
+                text.add(countyText.getText());
+                text.add(eircodeText.getText());
+                text.add(phoneText.getText());
+                text.add(regText.getText());
+                String make = (String) makeBox.getSelectedItem();
+                text.add(make);
+                String model = (String) modelBox.getSelectedItem();
+                text.add(model);
+
+                StringBuilder output = new StringBuilder();
+                for(Object str : text){
+                    output.append(str.toString());
+                    output.append("\n");
+                }
+
+
+
+                try {
+                    Files.write(Paths.get("src/Registrations.txt"), output.toString().getBytes(), StandardOpenOption.APPEND);
+                    JOptionPane.showMessageDialog(null,"Successfully added","Registered",JOptionPane.INFORMATION_MESSAGE);
+
+                    reset();
+                }
+                catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void reset(){
+        ArrayList<JTextField> reset = new ArrayList<>();
+        reset.add(forenameText);
+        reset.add(surnameText);
+        reset.add(streetText);
+        reset.add(townText);
+        reset.add(countyText);
+        reset.add(eircodeText);
+        reset.add(phoneText);
+        reset.add(regText);
+
+        for(JTextField field : reset){
+            field.setText("");
+        }
+
+        makeBox.setSelectedIndex(-1);
+        modelBox.setSelectedIndex(-1);
+
     }
 
     void showReg(){
