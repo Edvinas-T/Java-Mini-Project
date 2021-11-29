@@ -10,6 +10,7 @@ public class MotorTaxForm{
     private JLabel motorTaxLabel;
     private JPanel panelMain;
     RegisterOwnershipForm Register = new RegisterOwnershipForm();
+    UpdateOwnership Update = new UpdateOwnership();
 
      public MotorTaxForm() {
 
@@ -26,6 +27,14 @@ public class MotorTaxForm{
              @Override
              public void actionPerformed(ActionEvent e) {
                  System.exit(0);
+             }
+         });
+         updateBtn.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+
+                 Update.showUpdateReg();
+
              }
          });
      }

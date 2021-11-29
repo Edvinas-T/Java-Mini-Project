@@ -3,7 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -84,9 +86,16 @@ public class RegisterOwnershipForm {
         eircodeText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if(eircodeText.getText().length()>= 7)
+                String eir = eircodeText.getText();
+                char input = e.getKeyChar();
+                if(eir.length()>= 7 ) {
                     e.consume();
 
+                }
+
+                /*if(!Character.isDigit(eir.charAt(0))){
+                    e.consume();    //fix validation here
+                }*/
             }
         });
 
@@ -181,6 +190,8 @@ public class RegisterOwnershipForm {
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+
                 text.add(forenameText.getText());
                 text.add(surnameText.getText());
                 text.add(streetText.getText());
@@ -195,22 +206,35 @@ public class RegisterOwnershipForm {
                 text.add(model);
 
                 StringBuilder output = new StringBuilder();
-                for(Object str : text){
-                    output.append(str.toString());
-                    output.append("\n");
-                }
-
-
-
                 try {
-                    Files.write(Paths.get("src/Registrations.txt"), output.toString().getBytes(), StandardOpenOption.APPEND);
-                    JOptionPane.showMessageDialog(null,"Successfully added","Registered",JOptionPane.INFORMATION_MESSAGE);
+                    for (Object str : text) {
+                        output.append(str.toString());
+                        output.append("\n");
+                    }
+                    try {
+                        File txtfile = null;
 
-                    reset();
+                        txtfile = new File(surnameText.getText()+forenameText.getText()+".txt");
+                        txtfile.createNewFile();
+                        Files.write(Paths.get(txtfile.getCanonicalPath()),output.toString().getBytes(),StandardOpenOption.APPEND);  //i cant believe this works
+                        JOptionPane.showMessageDialog(null,"Successfully added","Registered",JOptionPane.INFORMATION_MESSAGE);
+
+                        reset();
+                        text.clear();
+                    }
+                    catch (IOException e1) {
+                        e1.printStackTrace();   //shouldnt be an error unless destination of txt file is changed
+                    }
                 }
-                catch (IOException e1) {
-                    e1.printStackTrace();
+                catch (NullPointerException e1)
+                {
+                    JOptionPane.showMessageDialog(null,"Error - All info must be filled","Error",JOptionPane.ERROR_MESSAGE);
+
                 }
+
+
+
+
             }
         });
     }
