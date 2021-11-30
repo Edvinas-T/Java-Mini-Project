@@ -14,29 +14,16 @@ import java.util.List;
 
 
 public class RegisterOwnershipForm {
-    private JLabel motorTaxLabel;
+    private JLabel registerLabel;
     private JPanel PanelRegister;
     private JTextField forenameText;
-    private JLabel forenameLabel;
-    private JLabel surnameLabel;
-    private JLabel streetLabel;
-    private JLabel townLabel;
-    private JLabel countyLabel;
-    private JLabel eircodeLabel;
-    private JLabel phoneLabel;
-    private JLabel regLabel;
-    private JLabel makeLabel;
+    private JLabel forenameLabel,surnameLabel,streetLabel, townLabel, countyLabel, eircodeLabel, phoneLabel, regLabel, makeLabel;
     private JComboBox makeBox;
     private JComboBox modelBox;
     private JLabel modelLabel;
-    private JTextField surnameText;
-    private JTextField streetText;
-    private JTextField townText;
-    private JTextField countyText;
-    private JTextField eircodeText;
-    private JTextField phoneText;
-    private JTextField regText;
+    private JTextField surnameText,streetText, townText, countyText, eircodeText, phoneText, regText;
     private JButton btnSave;
+    private JButton btnExit;
     private ArrayList<String> text = new ArrayList<>();
 
 
@@ -237,6 +224,7 @@ public class RegisterOwnershipForm {
 
             }
         });
+
     }
 
     public void reset(){
