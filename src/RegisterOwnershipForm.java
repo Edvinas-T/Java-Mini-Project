@@ -14,29 +14,16 @@ import java.util.List;
 
 
 public class RegisterOwnershipForm {
-    private JLabel motorTaxLabel;
+    private JLabel registerLabel;
     private JPanel PanelRegister;
     private JTextField forenameText;
-    private JLabel forenameLabel;
-    private JLabel surnameLabel;
-    private JLabel streetLabel;
-    private JLabel townLabel;
-    private JLabel countyLabel;
-    private JLabel eircodeLabel;
-    private JLabel phoneLabel;
-    private JLabel regLabel;
-    private JLabel makeLabel;
+    private JLabel forenameLabel,surnameLabel,streetLabel, townLabel, countyLabel, eircodeLabel, phoneLabel, regLabel, makeLabel;
     private JComboBox makeBox;
     private JComboBox modelBox;
     private JLabel modelLabel;
-    private JTextField surnameText;
-    private JTextField streetText;
-    private JTextField townText;
-    private JTextField countyText;
-    private JTextField eircodeText;
-    private JTextField phoneText;
-    private JTextField regText;
+    private JTextField surnameText,streetText, townText, countyText, eircodeText, phoneText, regText;
     private JButton btnSave;
+    private JButton btnExit;
     private ArrayList<String> text = new ArrayList<>();
 
 
@@ -47,39 +34,38 @@ public class RegisterOwnershipForm {
     public RegisterOwnershipForm() {
 
 
-
         forenameText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if(forenameText.getText().length()>= 20)  //limits characters to 20
+                if (forenameText.getText().length() >= 20)  //limits characters to 20
                     e.consume();
             }
         });
         surnameText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if(surnameText.getText().length()>= 20)
+                if (surnameText.getText().length() >= 20)
                     e.consume();
             }
         });
         streetText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if(streetText.getText().length()>= 20)
+                if (streetText.getText().length() >= 20)
                     e.consume();
             }
         });
         townText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if(townText.getText().length()>= 20)
+                if (townText.getText().length() >= 20)
                     e.consume();
             }
         });
         countyText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if(countyText.getText().length()>= 20)
+                if (countyText.getText().length() >= 20)
                     e.consume();
             }
         });
@@ -88,7 +74,7 @@ public class RegisterOwnershipForm {
             public void keyTyped(KeyEvent e) {
                 String eir = eircodeText.getText();
                 char input = e.getKeyChar();
-                if(eir.length()>= 7 ) {
+                if (eir.length() >= 7) {
                     e.consume();
 
                 }
@@ -103,13 +89,11 @@ public class RegisterOwnershipForm {
             @Override
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
-                if((phoneText.getText().length()>=10))
-                {
+                if ((phoneText.getText().length() >= 10)) {
                     e.consume();
                 }
 
-                if(((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE))
-                {
+                if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
                     e.consume();
                 }
             }
@@ -118,7 +102,7 @@ public class RegisterOwnershipForm {
             @Override
             public void keyTyped(KeyEvent e) {
 
-                if(regText.getText().length()>= 9)
+                if (regText.getText().length() >= 9)
                     e.consume();
                 //8 to 9 chars - first 2/3 must be digits 3
             }
@@ -130,48 +114,42 @@ public class RegisterOwnershipForm {
                 modelLabel.setVisible(true);
                 modelBox.setVisible(true);
 
-                if(makeBox.getSelectedIndex()==0)
-                {
+                if (makeBox.getSelectedIndex() == 0) {
                     modelBox.removeAllItems();
                     modelBox.addItem("A3");
                     modelBox.addItem("A4");
                     modelBox.addItem("A5");
                 }
 
-                if(makeBox.getSelectedIndex()==1)
-                {
+                if (makeBox.getSelectedIndex() == 1) {
                     modelBox.removeAllItems();
                     modelBox.addItem("i3");
                     modelBox.addItem("i4 M50");
                     modelBox.addItem("X3");
                 }
 
-                if(makeBox.getSelectedIndex()==2)
-                {
+                if (makeBox.getSelectedIndex() == 2) {
                     modelBox.removeAllItems();
                     modelBox.addItem("Fiesta");
                     modelBox.addItem("Focus");
                     modelBox.addItem("Ranger");
                 }
 
-                if(makeBox.getSelectedIndex()==3)
-                {
+                if (makeBox.getSelectedIndex() == 3) {
                     modelBox.removeAllItems();
                     modelBox.addItem("i10");
                     modelBox.addItem("i20");
                     modelBox.addItem("i30");
                 }
 
-                if(makeBox.getSelectedIndex()==4)
-                {
+                if (makeBox.getSelectedIndex() == 4) {
                     modelBox.removeAllItems();
                     modelBox.addItem("Ceed");
                     modelBox.addItem("Picanto");
                     modelBox.addItem("Sorento");
                 }
 
-                if(makeBox.getSelectedIndex()==5)
-                {
+                if (makeBox.getSelectedIndex() == 5) {
                     modelBox.removeAllItems();
                     modelBox.addItem("207");
                     modelBox.addItem("208");
@@ -184,9 +162,10 @@ public class RegisterOwnershipForm {
             public void actionPerformed(ActionEvent e) {
 
 
-
             }
         });
+
+
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -237,6 +216,7 @@ public class RegisterOwnershipForm {
 
             }
         });
+
     }
 
     public void reset(){
@@ -267,7 +247,7 @@ public class RegisterOwnershipForm {
         Register.pack();
         Register.setVisible(true);
         Register.setLocationRelativeTo(null);
-        Register.setSize(550,500);
+        Register.setSize(550,550);
 
 
     }
