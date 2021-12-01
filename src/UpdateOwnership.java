@@ -20,6 +20,9 @@ public class UpdateOwnership {
     private JButton selectOwnerToUpdateButton;
     private JFileChooser OwnerChooser;
     private File file;
+    private BufferedReader reader = null;
+    private ArrayList<String> list= new ArrayList<>();
+
     public UpdateOwnership() {
 
         selectOwnerToUpdateButton.addActionListener(new ActionListener() {
@@ -37,10 +40,27 @@ public class UpdateOwnership {
                 if (result == JFileChooser.APPROVE_OPTION) {
 
                     file = OwnerChooser.getSelectedFile();
-                    try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-                        List<String> infoTextFields = new ArrayList<>();
-                        infoTextFields = Files.readAllLines(file.toPath()); //https://stackoverflow.com/questions/5343689/java-reading-a-file-into-an-arraylist
-                                                                            //https://stackoverflow.com/questions/22873417/choosing-a-txt-file-with-jfilechooser-and-making-it-appear-on-a-jtextfield-just
+                    try{
+                        reader = new BufferedReader(new FileReader(file));
+
+                        String str;
+                        while((str = reader.readLine()) != null){
+                            list.add((str));
+
+                        }
+
+                        forenameText.setText(list.get(0));
+                        surnameText.setText(list.get(1));
+                        streetText.setText(list.get(2));
+                        townText.setText(list.get(3));
+                        countyText.setText(list.get(4));
+                        eircodeText.setText(list.get(5));
+                        phoneText.setText(list.get(6));
+                        regText.setText(list.get(7));
+                        makeBox.addItem(list.get(8));
+                        modelBox.addItem(list.get(9));
+
+
                     } catch (FileNotFoundException fileNotFoundException) {
                         fileNotFoundException.printStackTrace();
                     } catch (IOException ioException) {
@@ -130,50 +150,7 @@ public class UpdateOwnership {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                modelLabel.setVisible(true);
-                modelBox.setVisible(true);
 
-                if (makeBox.getSelectedIndex() == 0) {
-                    modelBox.removeAllItems();
-                    modelBox.addItem("A3");
-                    modelBox.addItem("A4");
-                    modelBox.addItem("A5");
-                }
-
-                if (makeBox.getSelectedIndex() == 1) {
-                    modelBox.removeAllItems();
-                    modelBox.addItem("i3");
-                    modelBox.addItem("i4 M50");
-                    modelBox.addItem("X3");
-                }
-
-                if (makeBox.getSelectedIndex() == 2) {
-                    modelBox.removeAllItems();
-                    modelBox.addItem("Fiesta");
-                    modelBox.addItem("Focus");
-                    modelBox.addItem("Ranger");
-                }
-
-                if (makeBox.getSelectedIndex() == 3) {
-                    modelBox.removeAllItems();
-                    modelBox.addItem("i10");
-                    modelBox.addItem("i20");
-                    modelBox.addItem("i30");
-                }
-
-                if (makeBox.getSelectedIndex() == 4) {
-                    modelBox.removeAllItems();
-                    modelBox.addItem("Ceed");
-                    modelBox.addItem("Picanto");
-                    modelBox.addItem("Sorento");
-                }
-
-                if (makeBox.getSelectedIndex() == 5) {
-                    modelBox.removeAllItems();
-                    modelBox.addItem("207");
-                    modelBox.addItem("208");
-                    modelBox.addItem("308");
-                }
             }
         });
         modelBox.addActionListener(new ActionListener() {
@@ -195,5 +172,6 @@ public class UpdateOwnership {
         Register.setVisible(true);
         Register.setLocationRelativeTo(null);
         Register.setSize(550,550);
+        Register.setResizable(false);
 }
 }

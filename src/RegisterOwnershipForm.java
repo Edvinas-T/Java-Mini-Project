@@ -248,7 +248,7 @@ public class RegisterOwnershipForm {
         Register.setVisible(true);
         Register.setLocationRelativeTo(null);
         Register.setSize(550,550);
-
+        Register.setResizable(false);
 
     }
 

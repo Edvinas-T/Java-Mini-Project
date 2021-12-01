@@ -48,6 +48,13 @@ public class MotorTaxForm{
         mainPage.setVisible(true);
         mainPage.setLocationRelativeTo(null);
         mainPage.setSize(700,500);
+        mainPage.setResizable(false);
+
+       /* if(registerBtn.getModel().isPressed())
+        {
+            System.out.println("pressed");      not sure where to put this
+            mainPage.setVisible(false);
+        }*/
 
     }
 
