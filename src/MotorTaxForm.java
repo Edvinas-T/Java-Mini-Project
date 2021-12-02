@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 
 public class MotorTaxForm{
     private JButton registerBtn;
-    private JButton renewTax;
     private JButton exitBtn;
     private JButton updateBtn;
     private JLabel motorTaxLabel;

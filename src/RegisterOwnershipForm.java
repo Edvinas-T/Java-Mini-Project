@@ -23,11 +23,10 @@ public class RegisterOwnershipForm {
     private JLabel modelLabel;
     private JTextField surnameText,streetText, townText, countyText, eircodeText, phoneText, regText;
     private JButton btnSave;
+    private JButton dobButton;
     private JButton btnExit;
     private ArrayList<String> text = new ArrayList<>();
-
-
-    // ArrayList<String> make = new ArrayList<String>();
+    private ArrayList<JTextField> reset = new ArrayList<>();
 
 
 
@@ -37,15 +36,26 @@ public class RegisterOwnershipForm {
         forenameText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
+
                 if (forenameText.getText().length() >= 20)  //limits characters to 20
                     e.consume();
+
+                char c = e.getKeyChar();
+                if (!((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+                    e.consume();
+                }
             }
+
         });
         surnameText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 if (surnameText.getText().length() >= 20)
                     e.consume();
+                char c = e.getKeyChar();
+                if (!((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+                    e.consume();
+                }
             }
         });
         streetText.addKeyListener(new KeyAdapter() {
@@ -53,6 +63,7 @@ public class RegisterOwnershipForm {
             public void keyTyped(KeyEvent e) {
                 if (streetText.getText().length() >= 20)
                     e.consume();
+
             }
         });
         townText.addKeyListener(new KeyAdapter() {
@@ -60,6 +71,10 @@ public class RegisterOwnershipForm {
             public void keyTyped(KeyEvent e) {
                 if (townText.getText().length() >= 20)
                     e.consume();
+                char c = e.getKeyChar();
+                if (!((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+                    e.consume();
+                }
             }
         });
         countyText.addKeyListener(new KeyAdapter() {
@@ -67,6 +82,10 @@ public class RegisterOwnershipForm {
             public void keyTyped(KeyEvent e) {
                 if (countyText.getText().length() >= 20)
                     e.consume();
+                char c = e.getKeyChar();
+                if (!((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+                    e.consume();
+                }
             }
         });
         eircodeText.addKeyListener(new KeyAdapter() {
@@ -157,18 +176,14 @@ public class RegisterOwnershipForm {
                 }
             }
         });
-        modelBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-
-            }
-        });
 
 
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+               Validation valid = new Validation();
+               valid.textValid(forenameText,surnameText,streetText,townText,countyText,eircodeText,phoneText,regText);
 
 
                 text.add(forenameText.getText());
@@ -178,7 +193,7 @@ public class RegisterOwnershipForm {
                 text.add(countyText.getText());
                 text.add(eircodeText.getText());
                 text.add(phoneText.getText());
-                text.add(regText.getText());
+                text.add(regText.getText().toUpperCase());
                 String make = (String) makeBox.getSelectedItem();
                 text.add(make);
                 String model = (String) modelBox.getSelectedItem();
@@ -191,14 +206,14 @@ public class RegisterOwnershipForm {
                         output.append("\n");
                     }
                     try {
-                        File txtfile = null;
+                        File txtfile;
 
                         txtfile = new File(surnameText.getText()+forenameText.getText()+".txt");
                         txtfile.createNewFile();
                         Files.write(Paths.get(txtfile.getCanonicalPath()),output.toString().getBytes(),StandardOpenOption.APPEND);  //i cant believe this works
                         JOptionPane.showMessageDialog(null,"Successfully added","Registered",JOptionPane.INFORMATION_MESSAGE);
 
-                        reset();
+                        valid.reset(reset,forenameText,surnameText,streetText,townText,countyText,eircodeText,phoneText,regText,makeBox,modelBox);
                         text.clear();
                     }
                     catch (IOException e1) {
@@ -219,25 +234,7 @@ public class RegisterOwnershipForm {
 
     }
 
-    public void reset(){
-        ArrayList<JTextField> reset = new ArrayList<>();
-        reset.add(forenameText);
-        reset.add(surnameText);
-        reset.add(streetText);
-        reset.add(townText);
-        reset.add(countyText);
-        reset.add(eircodeText);
-        reset.add(phoneText);
-        reset.add(regText);
 
-        for(JTextField field : reset){
-            field.setText("");
-        }
-
-        makeBox.setSelectedIndex(-1);
-        modelBox.setSelectedIndex(-1);
-
-    }
 
     void showReg(){
 
