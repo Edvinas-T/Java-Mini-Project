@@ -1,3 +1,6 @@
+//RegisterOwnershipForm.java
+
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -5,13 +8,16 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * An instantiable class which defines the RegisterOwnership Form. It contains validation and exception-handling
+ * code in its KeyListeners and Actionlisteners.
+ * @ Edvinas Tkacenka
+ */
 
 public class RegisterOwnershipForm {
     private JLabel registerLabel;
@@ -23,12 +29,16 @@ public class RegisterOwnershipForm {
     private JLabel modelLabel;
     private JTextField surnameText,streetText, townText, countyText, eircodeText, phoneText, regText;
     private JButton btnSave;
-    private JButton dobButton;
-    private JButton btnExit;
-    private ArrayList<String> text = new ArrayList<>();
-    private ArrayList<JTextField> reset = new ArrayList<>();
+    private final ArrayList<String> text = new ArrayList<>();
+    private final ArrayList<JTextField> reset = new ArrayList<>();
 
-
+    /**
+     * The main method.
+     * The empty fields are entered with user-supplied values and simple validation is done as each key is pressed.
+     * The user selects a value from the Make ComboBox and the Model ComboBox.
+     * Save button takes all user-supplied values and creates a new text file which adds all values in to.
+     * Validation method is called from Validation.java that checks if the user-supplied fields are correct.
+     */
 
     public RegisterOwnershipForm() {
 
@@ -92,15 +102,10 @@ public class RegisterOwnershipForm {
             @Override
             public void keyTyped(KeyEvent e) {
                 String eir = eircodeText.getText();
-                char input = e.getKeyChar();
+
                 if (eir.length() >= 7) {
                     e.consume();
-
                 }
-
-                /*if(!Character.isDigit(eir.charAt(0))){
-                    e.consume();    //fix validation here
-                }*/
             }
         });
 
@@ -123,7 +128,7 @@ public class RegisterOwnershipForm {
 
                 if (regText.getText().length() >= 9)
                     e.consume();
-                //8 to 9 chars - first 2/3 must be digits 3
+
             }
         });
         makeBox.addActionListener(new ActionListener() {
@@ -183,15 +188,21 @@ public class RegisterOwnershipForm {
             public void actionPerformed(ActionEvent e) {
 
                Validation valid = new Validation();
+
+
                valid.textValid(forenameText,surnameText,streetText,townText,countyText,eircodeText,phoneText,regText);
 
+                if(forenameText.getText().isEmpty() || surnameText.getText().isEmpty() || streetText.getText().isEmpty() || townText.getText().isEmpty() || countyText.getText().isEmpty() || eircodeText.getText().isEmpty() || phoneText.getText().isEmpty() || regText.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Error - All info must be filled", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
                 text.add(forenameText.getText());
                 text.add(surnameText.getText());
                 text.add(streetText.getText());
                 text.add(townText.getText());
                 text.add(countyText.getText());
-                text.add(eircodeText.getText());
+                text.add(eircodeText.getText().toUpperCase());
                 text.add(phoneText.getText());
                 text.add(regText.getText().toUpperCase());
                 String make = (String) makeBox.getSelectedItem();
@@ -234,7 +245,10 @@ public class RegisterOwnershipForm {
 
     }
 
-
+    /**
+     * Method that is called from MotorTaxForm.
+     * It displays the RegisterOwnershipForm GUI.
+     */
 
     void showReg(){
 

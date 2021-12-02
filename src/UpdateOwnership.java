@@ -6,6 +6,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
@@ -23,9 +24,10 @@ public class UpdateOwnership {
     private JFileChooser OwnerChooser;
     private File file;
     private BufferedReader reader = null;
-    private ArrayList<String> list= new ArrayList<>();
+    private final ArrayList<String> list= new ArrayList<>();
     Validation valid = new Validation();
-    private ArrayList<String> text = new ArrayList<>();
+    private final ArrayList<String> text = new ArrayList<>();
+    ArrayList<JTextField> reset = new ArrayList<>();
 
     public UpdateOwnership() {
 
@@ -35,6 +37,10 @@ public class UpdateOwnership {
 
                 makeBox.removeAllItems();
                 modelBox.removeAllItems();
+
+                file = null;
+
+                valid.reset(reset,forenameText,surnameText,streetText,townText,countyText,eircodeText,phoneText,regText,makeBox,modelBox);
 
                 OwnerChooser = new JFileChooser("./");
                 OwnerChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -69,6 +75,8 @@ public class UpdateOwnership {
                         makeBox.addItem(list.get(8));
                         modelBox.addItem(list.get(9));
 
+                        list.clear();
+
 
                     } catch (FileNotFoundException fileNotFoundException) {
                         fileNotFoundException.printStackTrace();
@@ -78,6 +86,7 @@ public class UpdateOwnership {
 
 
                 }
+
 
             }});
 
@@ -138,15 +147,13 @@ public class UpdateOwnership {
             @Override
             public void keyTyped(KeyEvent e) {
                 String eir = eircodeText.getText();
-                char input = e.getKeyChar();
+
                 if (eir.length() >= 7) {
                     e.consume();
 
                 }
 
-                /*if(!Character.isDigit(eir.charAt(0))){
-                    e.consume();    //fix validation here
-                }*/
+
             }
         });
 
@@ -169,23 +176,10 @@ public class UpdateOwnership {
 
                 if (regText.getText().length() >= 9)
                     e.consume();
-                //8 to 9 chars - first 2/3 must be digits 3
-            }
-        });
-        makeBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
 
             }
         });
-        modelBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-
-            }
-        });
 
         btnSave.addActionListener(new ActionListener() {
             @Override
@@ -194,13 +188,17 @@ public class UpdateOwnership {
                 Validation valid = new Validation();
                 valid.textValid(forenameText,surnameText,streetText,townText,countyText,eircodeText,phoneText,regText);
 
+                if(forenameText.getText().isEmpty() || surnameText.getText().isEmpty() || streetText.getText().isEmpty() || townText.getText().isEmpty() || countyText.getText().isEmpty() || eircodeText.getText().isEmpty() || phoneText.getText().isEmpty() || regText.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Error - All info must be filled", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
                 text.add(forenameText.getText());
                 text.add(surnameText.getText());
                 text.add(streetText.getText());
                 text.add(townText.getText());
                 text.add(countyText.getText());
-                text.add(eircodeText.getText());
+                text.add(eircodeText.getText().toUpperCase());
                 text.add(phoneText.getText());
                 text.add(regText.getText().toUpperCase());
                 String make = (String) makeBox.getSelectedItem();
@@ -216,21 +214,16 @@ public class UpdateOwnership {
                     }
                     try {
 
+                        new PrintWriter(file.getPath()).close();    //deletes contents of txt file
 
-
-                        File txtfile;
-
-                        txtfile = new File(surnameText.getText()+forenameText.getText()+".txt");
-                        txtfile.createNewFile();
-
-                        Files.write(Paths.get(txtfile.getCanonicalPath()),output.toString().getBytes(), StandardOpenOption.APPEND);  //i cant believe this works
+                        Files.write(Paths.get(file.getCanonicalPath()),output.toString().getBytes(), StandardOpenOption.APPEND);
                         JOptionPane.showMessageDialog(null,"Successfully added","Registered",JOptionPane.INFORMATION_MESSAGE);
 
 
                         text.clear();
                     }
                     catch (IOException e1) {
-                        e1.printStackTrace();   //shouldnt be an error unless destination of txt file is changed
+                        e1.printStackTrace();
                     }
                 }
                 catch (NullPointerException e1)
@@ -238,12 +231,6 @@ public class UpdateOwnership {
                     JOptionPane.showMessageDialog(null,"Error - All info must be filled","Error",JOptionPane.ERROR_MESSAGE);
 
                 }
-
-
-
-
-
-
 
             }
         });
