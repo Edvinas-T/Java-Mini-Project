@@ -18,42 +18,22 @@
         <children>
           <component id="241dc" class="javax.swing.JButton" binding="registerBtn">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="1" indent="1" use-parent-layout="false">
-                <preferred-size width="-1" height="100"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="1" use-parent-layout="false">
+                <preferred-size width="250" height="100"/>
               </grid>
             </constraints>
             <properties>
               <text value="Register Ownership"/>
             </properties>
           </component>
-          <component id="81017" class="javax.swing.JButton" binding="renewTax">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="1" indent="1" use-parent-layout="false">
-                <preferred-size width="-1" height="100"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="Renew Motor Tax"/>
-            </properties>
-          </component>
           <component id="ba8e5" class="javax.swing.JButton" binding="updateBtn">
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="-1" height="100"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="250" height="100"/>
               </grid>
             </constraints>
             <properties>
               <text value="Update Ownership"/>
-            </properties>
-          </component>
-          <component id="2a45" class="javax.swing.JButton" binding="exitBtn">
-            <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="-1" height="100"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="Exit"/>
             </properties>
           </component>
           <vspacer id="51b5">
@@ -61,6 +41,16 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
+          <component id="2a45" class="javax.swing.JButton" binding="exitBtn">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="250" height="100"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Exit"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <component id="a350d" class="javax.swing.JLabel" binding="motorTaxLabel">
