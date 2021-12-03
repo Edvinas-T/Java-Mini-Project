@@ -174,7 +174,7 @@ public class UpdateOwnership {
             @Override
             public void keyTyped(KeyEvent e) {
 
-                if (regText.getText().length() >= 9)
+                if (regText.getText().length() >= 10)
                     e.consume();
 
             }
@@ -214,13 +214,16 @@ public class UpdateOwnership {
                     }
                     try {
 
+
                         new PrintWriter(file.getPath()).close();    //deletes contents of txt file
 
                         Files.write(Paths.get(file.getCanonicalPath()),output.toString().getBytes(), StandardOpenOption.APPEND);
-                        JOptionPane.showMessageDialog(null,"Successfully added","Registered",JOptionPane.INFORMATION_MESSAGE);
+
+                        JOptionPane.showMessageDialog(null,"Successfully updated","Registered",JOptionPane.INFORMATION_MESSAGE);
 
 
                         text.clear();
+
                     }
                     catch (IOException e1) {
                         e1.printStackTrace();

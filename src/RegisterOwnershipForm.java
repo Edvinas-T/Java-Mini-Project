@@ -126,7 +126,7 @@ public class RegisterOwnershipForm {
             @Override
             public void keyTyped(KeyEvent e) {
 
-                if (regText.getText().length() >= 9)
+                if (regText.getText().length() >= 10)
                     e.consume();
 
             }
@@ -221,7 +221,7 @@ public class RegisterOwnershipForm {
 
                         txtfile = new File(surnameText.getText()+forenameText.getText()+".txt");
                         txtfile.createNewFile();
-                        Files.write(Paths.get(txtfile.getCanonicalPath()),output.toString().getBytes(),StandardOpenOption.APPEND);  //i cant believe this works
+                        Files.write(Paths.get(txtfile.getCanonicalPath()),output.toString().getBytes(),StandardOpenOption.APPEND);  //https://stackoverflow.com/questions/1625234/how-to-append-text-to-an-existing-file-in-java altered from 'Kip'
                         JOptionPane.showMessageDialog(null,"Successfully added","Registered",JOptionPane.INFORMATION_MESSAGE);
 
                         valid.reset(reset,forenameText,surnameText,streetText,townText,countyText,eircodeText,phoneText,regText,makeBox,modelBox);

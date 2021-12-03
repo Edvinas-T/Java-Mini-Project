@@ -47,9 +47,9 @@ public class Validation {
             JOptionPane.showMessageDialog(null,"Phone number must not be more than 10 characters","Error",JOptionPane.ERROR_MESSAGE);
             field6.setText("");
         }
-        if(field7.getText().length()>9 || field7.getText().length()<=7)
+        if(field7.getText().length()>10 || field7.getText().length()<=7)
         {
-            JOptionPane.showMessageDialog(null,"Registration Number must be 7 to 9 characters","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Registration Number must be 7 to 10 characters","Error",JOptionPane.ERROR_MESSAGE);
             field7.setText("");
         }
 

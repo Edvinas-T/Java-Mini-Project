@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/t00216714/IdeaProjects/Java-Mini-Project/src</OriginalElement>
+  <nodes>
+    <node x="0.0" y="0.0">Validation</node>
+    <node x="324.25" y="963.0">MotorTaxForm</node>
+    <node x="457.5" y="217.0">RegisterOwnershipForm</node>
+    <node x="360.25" y="1247.0">Main</node>
+    <node x="193.5" y="151.0">UpdateOwnership</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="UpdateOwnership" target="Validation" relationship="CREATE">
+      <point x="61.0" y="-381.0" />
+      <point x="376.5" y="131.0" />
+      <point x="562.5" y="131.0" />
+      <point x="562.5" y="121.0" />
+      <point x="612.75" y="121.0" />
+      <point x="204.25" y="50.5" />
+    </edge>
+    <edge source="Main" target="MotorTaxForm" relationship="CREATE">
+      <point x="0.0" y="-39.5" />
+      <point x="0.0" y="117.0" />
+    </edge>
+    <edge source="MotorTaxForm" target="RegisterOwnershipForm" relationship="CREATE">
+      <point x="27.625" y="-117.0" />
+      <point x="462.375" y="938.0" />
+      <point x="510.0" y="938.0" />
+      <point x="-52.5" y="315.0" />
+    </edge>
+    <edge source="MotorTaxForm" target="UpdateOwnership" relationship="TO_ONE">
+      <point x="-82.875" y="-117.0" />
+      <point x="351.875" y="938.0" />
+      <point x="254.5" y="938.0" />
+      <point x="-61.0" y="381.0" />
+    </edge>
+    <edge source="MotorTaxForm" target="RegisterOwnershipForm" relationship="TO_ONE">
+      <point x="82.875" y="-117.0" />
+      <point x="517.625" y="938.0" />
+      <point x="615.0" y="938.0" />
+      <point x="52.5" y="315.0" />
+    </edge>
+    <edge source="MotorTaxForm" target="UpdateOwnership" relationship="CREATE">
+      <point x="-27.625" y="-117.0" />
+      <point x="407.125" y="938.0" />
+      <point x="376.5" y="938.0" />
+      <point x="61.0" y="381.0" />
+    </edge>
+    <edge source="RegisterOwnershipForm" target="Validation" relationship="CREATE">
+      <point x="0.0" y="-315.0" />
+      <point x="562.5" y="121.0" />
+      <point x="612.75" y="121.0" />
+      <point x="204.25" y="50.5" />
+    </edge>
+    <edge source="UpdateOwnership" target="Validation" relationship="TO_ONE">
+      <point x="-61.0" y="-381.0" />
+      <point x="254.5" y="131.0" />
+      <point x="204.25" y="131.0" />
+      <point x="-204.25" y="50.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.6582466567607727" showDependencies="true" x="408.5" y="663.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
