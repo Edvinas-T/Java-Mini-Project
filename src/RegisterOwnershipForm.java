@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * An instantiable class which defines the RegisterOwnership Form. It contains validation and exception-handling
  * code in its KeyListeners and Actionlisteners.
- * @ Edvinas Tkacenka
+ * @author Edvinas Tkacenka
  */
 
 public class RegisterOwnershipForm {
@@ -35,6 +35,7 @@ public class RegisterOwnershipForm {
     /**
      * The main method.
      * The empty fields are entered with user-supplied values and simple validation is done as each key is pressed.
+     * Generates specific Models for every Make in makeBox.
      * The user selects a value from the Make ComboBox and the Model ComboBox.
      * Save button takes all user-supplied values and creates a new text file which adds all values in to.
      * Validation method is called from Validation.java that checks if the user-supplied fields are correct.
@@ -182,7 +183,11 @@ public class RegisterOwnershipForm {
             }
         });
 
-
+        /**
+         * Validates all text fields and adds them to an array
+         * Each index of the array is added to a string
+         * A text file is created and the string is appended to the text file.
+         */
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
